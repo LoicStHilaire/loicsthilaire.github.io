@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loïc St-Hilaire — Acteur, Comédien & Cascadeur</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --noir: #0a0a0a;
+    --blanc: #f5f2ed;
+    --or: #c8a96e;
+    --or-pale: #e8d9b8;
+    --gris: #2a2a2a;
+    --gris-moyen: #888;
+    --gris-clair: #d0cdc8;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--noir);
+    color: var(--blanc);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 3rem;
+    background: linear-gradient(to bottom, rgba(10,10,10,0.95), transparent);
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 0.35em;
+    color: var(--or);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gris-clair);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--or); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 8rem 4rem 6rem 5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--or);
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 9vw, 9rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    margin-bottom: 0.3rem;
+  }
+
+  h1 span {
+    display: block;
+    color: var(--or);
+  }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    color: var(--gris-clair);
+    margin: 1.5rem 0 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 2.5rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(200,169,110,0.25);
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .stat-value {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--or);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gris-moyen);
+  }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-photo-grid {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 3px;
+  }
+
+  .hero-photo-main {
+    background: url('https://mode-e-arto.com/assets/acteurs/loic-st-hilaire/LoicStHilaire-acteur1-Agence-mode-e-arto-26-1100x1600-000000.jpg') center/cover no-repeat;
+    background-color: var(--gris);
+  }
+
+  .hero-photo-duo {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px;
+  }
+
+  .hero-photo-sm {
+    background-color: var(--gris);
+    background-size: cover;
+    background-position: center top;
+  }
+
+  .photo-2 { background-image: url('https://mode-e-arto.com/assets/acteurs/loic-st-hilaire/LoicStHilaire-acteur2-Agence-mode-e-arto-26-1100x1600-000000.jpg'); }
+  .photo-3 { background-image: url('https://mode-e-arto.com/assets/acteurs/loic-st-hilaire/LoicStHilaire-acteur3-Agence-mode-e-arto-26-1100x1600-000000.jpg'); }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, var(--noir) 0%, rgba(10,10,10,0.3) 60%, transparent 100%);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* SCROLL CUE */
+  .scroll-cue {
+    position: absolute;
+    bottom: 2.5rem;
+    right: 3rem;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gris-moyen);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(to bottom, var(--or), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.1); }
+  }
+
+  /* SECTION STYLES */
+  section { padding: 7rem 5rem; }
+
+  .section-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(200,169,110,0.3);
+    max-width: 80px;
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    letter-spacing: 0.05em;
+    line-height: 1;
+    margin-bottom: 3rem;
+  }
+
+  /* À PROPOS */
+  #apropos {
+    background: var(--gris);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .apropos-text p {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    line-height: 1.8;
+    color: var(--gris-clair);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+  }
+
+  .caractéristiques {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 2rem;
+  }
+
+  .carac-item {
+    border-left: 2px solid var(--or);
+    padding-left: 1rem;
+  }
+
+  .carac-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 0.3rem;
+  }
+
+  .carac-value {
+    font-size: 0.95rem;
+    color: var(--blanc);
+    font-weight: 400;
+  }
+
+  /* CV */
+  #cv {
+    background: var(--noir);
+  }
+
+  .cv-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+  }
+
+  .cv-category h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    color: var(--or);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(200,169,110,0.3);
+  }
+
+  .cv-entry {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 1.2rem;
+    margin-bottom: 1.5rem;
+    align-items: start;
+  }
+
+  .cv-year {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    color: var(--or);
+    letter-spacing: 0.05em;
+    padding-top: 0.05rem;
+  }
+
+  .cv-detail {}
+
+  .cv-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--blanc);
+    margin-bottom: 0.2rem;
+  }
+
+  .cv-role {
+    font-size: 0.78rem;
+    font-style: italic;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--gris-clair);
+    margin-bottom: 0.15rem;
+  }
+
+  .cv-prod {
+    font-size: 0.72rem;
+    color: var(--gris-moyen);
+    letter-spacing: 0.05em;
+  }
+
+  /* PHOTOS */
+  #photos {
+    background: var(--gris);
+    padding-bottom: 5rem;
+  }
+
+  .photo-mosaic {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 400px 400px;
+    gap: 4px;
+    margin-top: 3rem;
+  }
+
+  .mosaic-main {
+    grid-row: 1 / 3;
+    background: url('https://mode-e-arto.com/assets/acteurs/loic-st-hilaire/LoicStHilaire-acteur1-Agence-mode-e-arto-26-1100x1600-000000.jpg') center/cover no-repeat;
+    background-color: #1a1a1a;
+  }
+
+  .mosaic-b {
+    background: url('https://mode-e-arto.com/assets/acteurs/loic-st-hilaire/LoicStHilaire-acteur2-Agence-mode-e-arto-26-1100x1600-000000.jpg') center top/cover no-repeat;
+    background-color: #1a1a1a;
+  }
+
+  .mosaic-c {
+    background: url('https://mode-e-arto.com/assets/acteurs/loic-st-hilaire/LoicStHilaire-acteur3-Agence-mode-e-arto-26-1100x1600-000000.jpg') center top/cover no-repeat;
+    background-color: #1a1a1a;
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--noir);
+    text-align: center;
+    padding: 8rem 3rem;
+  }
+
+  #contact h2 { margin-bottom: 1rem; }
+
+  .contact-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--gris-clair);
+    margin-bottom: 3.5rem;
+  }
+
+  .contact-cards {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+  }
+
+  .contact-card {
+    background: var(--gris);
+    border: 1px solid rgba(200,169,110,0.2);
+    padding: 2rem 2.5rem;
+    min-width: 220px;
+    transition: border-color 0.3s;
+  }
+
+  .contact-card:hover { border-color: var(--or); }
+
+  .cc-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .cc-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--or);
+    margin-bottom: 0.5rem;
+  }
+
+  .cc-value {
+    font-size: 0.9rem;
+    color: var(--blanc);
+  }
+
+  .cc-value a {
+    color: var(--blanc);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .cc-value a:hover { color: var(--or); }
+
+  .agence-note {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    color: var(--gris-moyen);
+    text-transform: uppercase;
+    margin-top: 2rem;
+  }
+
+  .agence-note a {
+    color: var(--or);
+    text-decoration: none;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--noir);
+    border-top: 1px solid rgba(200,169,110,0.15);
+    padding: 2rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 0.25em;
+    color: var(--or);
+  }
+
+  .footer-copy {
+    font-size: 0.7rem;
+    color: var(--gris-moyen);
+    letter-spacing: 0.1em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-left > * {
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+
+  .hero-left .hero-tag { animation-delay: 0.2s; }
+  .hero-left h1 { animation-delay: 0.4s; }
+  .hero-left .hero-subtitle { animation-delay: 0.6s; }
+  .hero-left .hero-stats { animation-delay: 0.8s; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+
+    #hero { grid-template-columns: 1fr; grid-template-rows: 100vh; }
+    .hero-right { position: absolute; inset: 0; }
+    .hero-left { padding: 6rem 2rem 3rem; }
+    .hero-overlay { background: linear-gradient(to top, rgba(10,10,10,0.95) 40%, rgba(10,10,10,0.5) 100%); }
+
+    section { padding: 4rem 1.5rem; }
+    #apropos { grid-template-columns: 1fr; gap: 3rem; }
+    .cv-grid { grid-template-columns: 1fr; }
+    .photo-mosaic { grid-template-columns: 1fr; grid-template-rows: 300px 300px 300px; }
+    .mosaic-main { grid-row: auto; }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">LSTH</a>
+  <ul class="nav-links">
+    <li><a href="#apropos">Profil</a></li>
+    <li><a href="#cv">Curriculum Vitae</a></li>
+    <li><a href="#photos">Photos</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Acteur · Comédien · Cascadeur</div>
+    <h1>Loïc<span>St-Hilaire</span></h1>
+    <p class="hero-subtitle">La bonne énergie pour votre prochain projet.</p>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-value">5'11"</span>
+        <span class="stat-label">Taille</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">18–20</span>
+        <span class="stat-label">Âge caméra</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">FR/EN</span>
+        <span class="stat-label">Langues</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo-grid">
+      <div class="hero-photo-main"></div>
+      <div class="hero-photo-duo">
+        <div class="hero-photo-sm photo-2"></div>
+        <div class="hero-photo-sm photo-3"></div>
+      </div>
+    </div>
+    <div class="hero-overlay"></div>
+  </div>
+  <div class="scroll-cue">
+    <div class="scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- À PROPOS -->
+<section id="apropos">
+  <div class="apropos-text">
+    <div class="section-eyebrow">Profil</div>
+    <h2>Qui suis-je</h2>
+    <p>
+      Je suis un acteur de 19 ans qui combine une formation professionnelle 
+      rigoureuse avec une énergie physique hors du commun. J'ai reçu une formation à l'École d'acteur 
+      de Québec (EDAQ) ainsi qu'un DEC Arts, lettres et communication option théâtre.
+    </p>
+    <!--<p>
+      J'ai un profil de jeu polyvalent — jeu, cascade, sports de contact — me rend disponible 
+      pour des productions exigeantes, qu'il s'agisse de fiction, de publicité ou 
+      de tournage web.
+    </p>-->
+  </div>
+  <div>
+    <div class="section-eyebrow">Caractéristiques</div>
+    <div class="caractéristiques">
+      <div class="carac-item">
+        <div class="carac-label">Âge caméra</div>
+        <div class="carac-value">18 – 20 ans</div>
+      </div>
+      <div class="carac-item">
+        <div class="carac-label">Taille</div>
+        <div class="carac-value">5'11" · 1m80</div>
+      </div>
+      <div class="carac-item">
+        <div class="carac-label">Langues</div>
+        <div class="carac-value">Français<br>Anglais fonctionnel</div>
+      </div>
+      <div class="carac-item">
+        <div class="carac-label">Sports, Loisirs et Habiletés</div>
+        <div class="carac-value">Kickboxing (Intermédiaire)<br>Football · Surf · Snowboard</div>
+      </div>
+      <div class="carac-item">
+        <div class="carac-label">Spécialité</div>
+        <div class="carac-value">Acteur · Comédien · Cascadeur</div>
+      </div>
+      <div class="carac-item">
+        <div class="carac-label">Disponibilité</div>
+        <div class="carac-value">Film · Série · Pub · Web · Théâtre</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CV -->
+<section id="cv">
+  <div class="section-eyebrow">Expériences</div>
+  <h2>Curriculum Vitæ</h2>
+
+  <div class="cv-grid">
+
+    <!-- THÉÂTRE -->
+    <div class="cv-category">
+      <h3>Théâtre</h3>
+
+      <div class="cv-entry">
+        <div class="cv-year">2025</div>
+        <div class="cv-detail">
+          <div class="cv-title">Saynètes — Niveau Avancé</div>
+          <div class="cv-role">2 rôles</div>
+          <div class="cv-prod">Petit Théâtre de Qc · Mise en scène: D. Nolet</div>
+        </div>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-year">2025</div>
+        <div class="cv-detail">
+          <div class="cv-title">Les Femmes de Bonne Humeur</div>
+          <div class="cv-role">Leonardo</div>
+          <div class="cv-prod">Cégep Limoilou</div>
+        </div>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-year">2024</div>
+        <div class="cv-detail">
+          <div class="cv-title">Judith</div>
+          <div class="cv-role">Ian</div>
+          <div class="cv-prod">Cégep Limoilou</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIDÉO / COURT MÉTRAGE -->
+    <div class="cv-category">
+      <h3>Écran</h3>
+
+      <div class="cv-entry">
+        <div class="cv-year">2025</div>
+        <div class="cv-detail">
+          <div class="cv-title">Scooby-Doo: Un Wendigo à l'école</div>
+          <div class="cv-role">Acteur · Cascadeur</div>
+          <div class="cv-prod">Court métrage · Réal: T. Pageau</div>
+        </div>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-year">2025</div>
+        <div class="cv-detail">
+          <div class="cv-title">Saynètes — Valises</div>
+          <div class="cv-role">1 rôle</div>
+          <div class="cv-prod">EDAQ · Captation vidéo · Réal: I. Howard</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORMATION -->
+    <div class="cv-category">
+      <h3>Formation</h3>
+
+      <div class="cv-entry">
+        <div class="cv-year">2025</div>
+        <div class="cv-detail">
+          <div class="cv-title">Programme intensif — Formation Professionnelle d'Acteur</div>
+          <div class="cv-prod">École d'acteur de Québec (EDAQ) · 3 mois</div>
+        </div>
+      </div>
+
+      <div class="cv-entry">
+        <div class="cv-year">2025<br>2023-</div>
+        <div class="cv-detail">
+          <div class="cv-title">DEC Arts, lettres et communication : option Théâtre</div>
+          <div class="cv-prod">Cégep Limoilou</div>
+        </div>
+      </div>
+
+      <div style="margin-top: 2.5rem; padding: 1.5rem; border: 1px solid rgba(200,169,110,0.2); background: rgba(200,169,110,0.04);">
+        <div class="carac-label" style="margin-bottom: 0.8rem;">Représenté par</div>
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--or-pale);">Mode é Arto</div>
+        <div style="font-size: 0.78rem; color: var(--gris-moyen); margin-top: 0.3rem;">Agence artistique · Québec</div>
+        <div style="font-size: 0.78rem; color: var(--gris-moyen);">418 529-9711</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PHOTOS -->
+<section id="photos">
+  <div class="section-eyebrow">Portfolio</div>
+  <h2>Photos</h2>
+  <div class="photo-mosaic">
+    <div class="mosaic-main"></div>
+    <div class="mosaic-b"></div>
+    <div class="mosaic-c"></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-eyebrow" style="justify-content: center;">Contact</div>
+  <h2>Travaillons ensemble</h2>
+  <p class="contact-sub">Disponible pour film, série, publicité, web & théâtre.</p>
+
+  <div class="contact-cards">
+    
+    <div class="contact-card">
+      <div class="cc-icon">✉️</div>
+      <div class="cc-label">Courriel agence</div>
+      <div class="cc-value"><a href="mailto:info@mode-e-arto.com">info@mode-e-arto.com</a></div>
+    </div>
+
+    <div class="contact-card">
+      <div class="cc-icon">📍</div>
+      <div class="cc-label">Localisation</div>
+      <div class="cc-value">Québec, QC, Canada</div>
+    </div>
+    <div class="contact-card">
+      <div class="cc-icon">📞</div>
+      <div class="cc-label">Agence — Mode é Arto</div>
+      <div class="cc-value"><a href="tel:4185299711">418 529-9711</a></div>
+    </div>
+    
+
+    <div class="contact-card">
+      <div class="cc-icon">✉️</div>
+      <div class="cc-label">Courriel personnel</div>
+      <div class="cc-value"><a href="mailto:loicsthilaire@gmail.com">loicsthilaire@gmail.com</a></div>
+    </div>
+    
+  </div>
+
+  <p class="agence-note">
+    Fiche officielle: <a href="http://mode-e-arto.com/acteur/n-a-2535" target="_blank">mode-e-arto.com</a>
+  </p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Loïc St-Hilaire</div>
+  <div class="footer-copy">Acteur &amp; Cascadeur · Québec · 2026</div>
+</footer>
+
+</body>
+</html>
